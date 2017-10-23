@@ -14,8 +14,8 @@ static char *classNameKey = "classNameKey";
 static char *textFieldNameKey = "textFieldNameKey";
 static char *editTimesKey = "editTimesKey";
 static char *startDateKey = "startDateKey";
-static char *endDateKey = "startDateKey";
-static char *isOpenMonitor = "isOpenMonitorKey";
+static char *endDateKey = "endDateKey";
+static char *isOpenMonitorKey = "isOpenMonitorKey";
 
 @implementation UITextField (JKTextField)
 
@@ -35,14 +35,36 @@ static char *isOpenMonitor = "isOpenMonitorKey";
     objc_setAssociatedObject(self, textFieldNameKey, textFieldName, OBJC_ASSOCIATION_COPY);
 }
 
-
-
 - (NSInteger)editTimes {
     return [objc_getAssociatedObject(self, editTimesKey) integerValue];
 }
 
 - (void)setEditTimes:(NSInteger)editTimes {
     objc_setAssociatedObject(self, editTimesKey, @(editTimes) , OBJC_ASSOCIATION_ASSIGN);
+}
+
+- (NSDate *)startDate {
+    return objc_getAssociatedObject(self, startDateKey);
+}
+
+- (void)setStartDate:(NSDate *)startDate {
+    objc_setAssociatedObject(self, startDateKey, startDate, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (NSDate *)endDate {
+    return objc_getAssociatedObject(self, endDateKey);
+}
+
+- (void)setEndDate:(NSDate *)endDate {
+    objc_setAssociatedObject(self, endDateKey, endDate, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (BOOL)isOpenMonitor {
+    return [objc_getAssociatedObject(self, isOpenMonitorKey) boolValue];
+}
+
+- (void)setIsOpenMonitor:(BOOL)isOpenMonitor {
+    objc_setAssociatedObject(self, isOpenMonitorKey, @(isOpenMonitor), OBJC_ASSOCIATION_ASSIGN);
 }
 
 + (void)load {
