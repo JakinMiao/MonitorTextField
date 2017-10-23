@@ -10,7 +10,7 @@
 
 @interface UITextField (JKTextField)
 
-/** 记录这个TextField 在哪一个controller里面 */
+/** 记录这个TextField 在哪一个controller里面作为表名 */
 @property (nonatomic, copy) NSString *className;
 
 /** 记录这个controller里面的指定的TextField */
